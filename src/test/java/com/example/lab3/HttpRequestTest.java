@@ -23,4 +23,6 @@ public class HttpRequestTest {
         System.out.println(this.restTemplate.getForObject("http://localhost:" +
                 port + "/", String.class));
     }
+
+
 }

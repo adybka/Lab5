@@ -1,10 +1,14 @@
 package com.example.lab3;
 
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import static org.junit.Assert.*;
 
@@ -13,7 +17,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-
+@RunWith(SpringRunner.class)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @SpringBootTest
 @AutoConfigureMockMvc
 public class AppTests {
@@ -28,6 +33,7 @@ public class AppTests {
     AddressBookRepo addressBookRepoRepo;
 
     @Test
+    @Order(1)
     public void addressBookShouldBeInital() throws Exception{
         String url = "/addressbooks";
         this.mockMvc.perform(get(url))
@@ -38,6 +44,7 @@ public class AppTests {
     }
 
     @Test
+    @Order(2)
     public void createNewBuddy() throws Exception{
         String url = "/buddyinfo";
         this.mockMvc.perform(post(url)
