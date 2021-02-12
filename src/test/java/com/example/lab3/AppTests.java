@@ -40,7 +40,7 @@ public class AppTests {
             .andDo(print())
             .andExpect(status().isOk());
         assertEquals(this.addressBookRepoRepo.count(), 1);
-        assertEquals(this.buddyRepo.count(), 2);
+        assertEquals(this.buddyRepo.count(), 2); 
     }
 
     @Test
