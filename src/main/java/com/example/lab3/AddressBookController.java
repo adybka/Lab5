@@ -19,18 +19,21 @@ public class AddressBookController {
 
     @GetMapping("/addressbooks")
     public String find(Model model){
-        AddressBook book = repository.findById(3);
-        List<String> buddies = new ArrayList<String>();
-        for(BuddyInfo b: book.getBuddy()){
-            buddies.add(b.getId() + " | " +b.getName() + " | " + b.getAge());
+        List<String> books = new ArrayList<String>();
+        for(AddressBook book: repository.findAll()){
+            books.add("Book: "+ book.getId());
         }
-        model.addAttribute("buddies", buddies);
+        model.addAttribute("list", books);
         return "View";
     }
 
     @PostMapping("/addressbooks")
-    public AddressBook newBook(@RequestBody AddressBook newBook){
-        return repository.save(newBook);
+    public String newBook(@RequestBody AddressBook newBook, Model model){
+        List<String> book = new ArrayList<String>();
+        repository.save(newBook);
+        book.add("Book Id Added: " + newBook.getId());
+        model.addAttribute("list", book);
+        return "View";
     }
 
     @GetMapping("/buddyinfo")
@@ -39,19 +42,24 @@ public class AddressBookController {
         for(BuddyInfo b: buddyRepo.findAll()){
             buddies.add(b.getId() + " | " +b.getName() + " | " + b.getAge());
         }
-        model.addAttribute("buddies", buddies);
+        model.addAttribute("list", buddies);
         return "View";
 
     }
 
     @PostMapping("/buddyinfo")
-    public void newBuddy(@RequestParam(value="name") String name,
+    public String newBuddy(@RequestParam(value="name") String name,
                          @RequestParam(value="age") int age,
-                         @RequestParam(value="bookid") int bid){
+                         @RequestParam(value="bookid") int bid,
+                         Model model){
+        List<String> buddy = new ArrayList<String>();
         BuddyInfo b = new BuddyInfo(name, age);
         AddressBook a = repository.findById(bid);
         a.addBuddy(b);
         buddyRepo.save(b);
+        buddy.add("BuddyAdded: " + b.getId() + " | " +b.getName() + " | " + b.getAge());
+        model.addAttribute("list", buddy);
+        return "View";
     }
 
 }
