@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Choose Book</title>
+</head>
+<body>
+    <h2>Add Buddy</h2>
+    <form action="#" th:action="@{/buddyinfo}" th:object="${newBud}" method="post">
+        <p>Name: <input type="text" th:field="*{name}"/></p>
+        <p>Age: <input type="text" th:field="*{age}"/></p>
+        <p>Select Book To Add To: </p>
+        <select th:name="bookId">
+            <option th:each="book: ${books}" th:value="${book.getId()}" th:text="${book.getName()}"></option>
+        </select>
+        <input type="submit" value="Submit" />
+    </form>
+</body>
+</html>

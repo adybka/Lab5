@@ -32,6 +32,7 @@ public class application {
             list.add(b2);
 
             AddressBook book = new AddressBook();
+            book.setName("Book1");
             book.setBuddy(list);
             aRepo.save(book);
 

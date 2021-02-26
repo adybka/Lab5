@@ -16,13 +16,14 @@ public class AddressBook {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
+    public String name;
+
     @OneToMany
     List<BuddyInfo> buddyCollection;
 
     public Long getId() {
         return id;
     }
-
 
     public Collection<BuddyInfo> getBuddy() {
         return buddyCollection;
@@ -34,6 +35,14 @@ public class AddressBook {
 
     public void addBuddy(BuddyInfo b){
         buddyCollection.add(b);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public AddressBook() {

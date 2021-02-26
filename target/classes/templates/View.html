@@ -5,8 +5,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
+    <h2>Buddy Added</h2>
+    <p>Book Buddy added too: <p th:text="${book.getName()}"/></p>
+    <p>Buddy added: <p th:text="${newBud.getName()}"/></p>
+    <h4>All Buddies In Book: </h4>
     <ol>
-        <li th:each="item : ${list}" th:text="${item}"></li>
+        <li th:each="item : ${list}" th:text="${item.getName()}"></li>
     </ol>
 </body>
 </html>

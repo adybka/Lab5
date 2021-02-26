@@ -7,4 +7,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 public interface AddressBookRepo extends CrudRepository <AddressBook, Long>{
 
     AddressBook findById (long id);
+
+    AddressBook findByName (String name);
 }
