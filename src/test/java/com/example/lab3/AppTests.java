@@ -42,18 +42,4 @@ public class AppTests {
         assertEquals(this.buddyRepo.count(), 2);
     }
 
-    @Test
-    @Order(2)
-    public void createNewBuddy() throws Exception{
-        String url = "/buddyinfo";
-        this.mockMvc.perform(post(url)
-                .param("name", "Brock")
-                .param("age", "20")
-                .param("bookid", "3")
-            ).andDo(print())
-            .andExpect(status().is(200));
-        assertNotNull(this.buddyRepo.findByName("Brock"));
-
-    }
-
 }
