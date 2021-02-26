@@ -46,6 +46,7 @@ public class AddressBookController {
         List<BuddyInfo> buddies = new ArrayList<BuddyInfo>();
         buddyRepo.save(newBud);
         book.addBuddy(newBud);
+        repository.save(book);
         model.addAttribute("list", book.getBuddy());
         model.addAttribute("book", book);
         model.addAttribute("newBud", newBud);
