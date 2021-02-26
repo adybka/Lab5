@@ -3,12 +3,16 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>CreateBook</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="script.js"></script>
 </head>
 <body>
     <h1>Create AddressBook</h1>
-    <form id="form" action="#" th:action="@{/addressbooks}" th:object="${newBook}" method="post">
-        <p>Name: <input type="text" th:field="*{name}"/></p>
-        <p><input type="submit" id="submit" value="Submit" /></p>
-    </form>
+    <div id="blah">
+        <form id="form" action="#" th:action="@{/addressbooks}" th:object="${newBook}" method="post">
+            <p>Name: <input type="text" th:field="*{name}"/></p>
+            <p><input type="submit" id="submit" value="Submit" /></p>
+        </form>
+    </div>
 </body>
 </html>
