@@ -27,7 +27,7 @@ var createBook = {
         })
     }
     ,showResult: function(jsonData){
-        $('#result').html($('<p>' + jsonData.toString() + '</p>').show())
+        $('#result').html($('<p>' + jsonData.toString() + '</p>')).show();
     }
 }
 
