@@ -29,7 +29,7 @@ public class AddressBookController {
         repository.save(newBook);
         book.add("Book Id Added: " + newBook.getId());
         model.addAttribute("list", book);
-        return "CreateBook";
+        return "ViewBooks";
     }
 
     @GetMapping("/buddyinfo")

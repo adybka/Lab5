@@ -2,7 +2,7 @@ var createBook = {
     setup: function(){
         $(document).on('click', '#submit', createBook.PostBook);
     }
-    ,PostBook: function(){
+    ,PostBook: function(e){
         e.preventDefault();
         var input = $("input");
         var params = {
@@ -27,7 +27,20 @@ var createBook = {
         })
     }
     ,showResult: function(jsonData){
-        $('#result').html($('<p>' + jsonData.toString() + '</p>')).show();
+        $('#form').hide()
+        var books = jsonData._embedded.addressBooks;
+
+        var list = document.createElement("ul");
+        for( book in books) {
+            var text = "Name: " + books[book].name;
+            var listItem = document.createElement("li");
+            var textItem = document.createTextNode(text);
+            listItem.appendChild(textItem);
+            list.appendChild(listItem);
+        }
+        var elem = document.getElementById("blah")
+        elem.appendChild(list);
+
     }
 }
 
